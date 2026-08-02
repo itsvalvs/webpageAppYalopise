@@ -11,6 +11,20 @@
 
   gtag('config', 'G-Q59N5N7GNG');
 </script>
+
+<!-- Microsoft Clarity (heatmaps + grabaciones de sesión, gratis) -->
+<!-- 1. Crea un proyecto en https://clarity.microsoft.com con tu cuenta -->
+<!-- 2. Sustituye TU_ID_DE_CLARITY por el ID que te den y descomenta este bloque -->
+<!--
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "TU_ID_DE_CLARITY");
+</script>
+-->
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ya lo pisé — el juego de conquistar Cantabria</title>
 <meta name="description" content="Conquista los 103 municipios de Cantabria: písalo, fotografíalo y píntalo de verde en tu mapa. Gratis, con amigos, fiestas y rutas."/>
@@ -161,8 +175,8 @@ footer .verde{color:var(--verde-vivo)}
       Visítalos, sube tu foto de evidencia —el GPS da fe— y ve pintando tu mapa de verde. <strong>Conquístala entera.</strong></p>
       <div class="ctas">
         <!-- ✏️ EDITA: enlace a tu app -->
-        <a class="btn btn-verde" href="https://app.yalopise.com/">🥾 Jugar ahora — es gratis</a>
-        <a class="btn btn-ghost" href="#como">¿Cómo se juega?</a>
+        <a class="btn btn-verde" href="https://app.yalopise.com/" data-track="cta_jugar" data-track-loc="hero">🥾 Jugar ahora — es gratis</a>
+        <a class="btn btn-ghost" href="#como" data-track="cta_como_se_juega" data-track-loc="hero">¿Cómo se juega?</a>
       </div>
       <p class="ios-hint">📱 En iPhone: ábrela en Safari → <b>Compartir → Añadir a pantalla de inicio</b>, y la tendrás como una app más.</p>
     </div>
@@ -275,13 +289,49 @@ footer .verde{color:var(--verde-vivo)}
   </div>
 </section>
 
+<!-- ═══ PATROCINADORES ═══ -->
+<section id="patrocinadores" class="social">
+  <div class="wrap" style="max-width:620px">
+    <span class="eyebrow">Para negocios y entidades</span>
+    <h2>¿Quieres patrocinar «Ya lo pisé»?</h2>
+    <p style="color:var(--tinta-2);margin-top:10px">Restaurantes, alojamientos, ayuntamientos, marcas cántabras… si quieres aparecer en la app o colaborar de alguna forma, cuéntame tu idea y hablamos.</p>
+    <form id="form-patro" style="margin-top:24px;text-align:left">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <input type="text" id="pt-nombre" placeholder="Nombre / empresa *" required maxlength="120"
+          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+        <input type="email" id="pt-email" placeholder="Email de contacto *" required maxlength="120"
+          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <select id="pt-tipo"
+          style="padding:13px 14px;background:#1a2535;border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none">
+          <option value="Restaurante / bar">Restaurante / bar</option>
+          <option value="Alojamiento">Alojamiento</option>
+          <option value="Ayuntamiento / entidad pública">Ayuntamiento / entidad pública</option>
+          <option value="Marca / comercio">Marca / comercio</option>
+          <option value="Fiesta o evento">Fiesta o evento</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <input type="text" id="pt-web" placeholder="Web o Instagram (opcional)" maxlength="150"
+          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+      </div>
+      <textarea id="pt-msg" placeholder="Cuéntame tu idea de colaboración *" required rows="4" maxlength="1500"
+        style="width:100%;margin-top:12px;padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none;resize:vertical;box-sizing:border-box"></textarea>
+      <input type="text" id="pt-hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true"/>
+      <button type="submit" id="pt-btn" class="btn btn-verde" data-track="submit_patrocinio" style="margin-top:14px;border:none;cursor:pointer;width:100%;justify-content:center">Quiero patrocinar / colaborar</button>
+      <p id="pt-estado" style="margin-top:12px;font-size:14px;display:none;text-align:center"></p>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <p>Hecho en Cantabria con <span class="verde">♥</span> y un sobao.</p>
     <p style="margin-top:8px">
-      <a href="https://app.yalopise.com/">Abrir la app</a> ·
+      <a href="https://app.yalopise.com/" data-track="cta_jugar" data-track-loc="footer">Abrir la app</a> ·
       <a href="privacidad.html">Política de privacidad</a> ·
-      <a href="#sugerencias">Contacto</a>
+      <a href="#sugerencias">Contacto</a> ·
+      <a href="#patrocinadores">Patrocina «Ya lo pisé»</a>
     </p>
     <p style="margin-top:8px">© 2026 Valvanuz Saro Cobo. Todos los derechos reservados.</p>
   </div>
@@ -363,6 +413,58 @@ document.getElementById('form-sug').addEventListener('submit', async function(e)
     est.textContent = '❌ No se pudo enviar. Inténtalo en un momento.';
     est.style.color = '#ff6b6b'; est.style.display = 'block';
   } finally { btn.disabled = false; btn.textContent = 'Enviar sugerencia'; }
+});
+</script>
+
+<script>
+document.getElementById('form-patro').addEventListener('submit', async function(e){
+  e.preventDefault();
+  if (document.getElementById('pt-hp').value) return;
+  const btn = document.getElementById('pt-btn'), est = document.getElementById('pt-estado');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/yalopiseapp@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        nombre_empresa: document.getElementById('pt-nombre').value.trim(),
+        email: document.getElementById('pt-email').value.trim(),
+        tipo: document.getElementById('pt-tipo').value,
+        web_instagram: document.getElementById('pt-web').value.trim() || '—',
+        mensaje: document.getElementById('pt-msg').value.trim(),
+        _subject: '🤝 Ya lo pisé — Patrocinio: ' + document.getElementById('pt-tipo').value,
+        _template: 'table', _captcha: 'false'
+      })
+    });
+    if (!r.ok) throw new Error();
+    est.textContent = '✅ ¡Gracias! Te contactaré en cuanto pueda.';
+    est.style.color = 'var(--verde-vivo)'; est.style.display = 'block';
+    if (typeof gtag === 'function') gtag('event', 'submit_patrocinio', { form_id: 'form-patro' });
+    this.reset();
+  } catch(err) {
+    est.textContent = '❌ No se pudo enviar. Inténtalo en un momento.';
+    est.style.color = '#ff6b6b'; est.style.display = 'block';
+  } finally { btn.disabled = false; btn.textContent = 'Quiero patrocinar / colaborar'; }
+});
+</script>
+
+<!-- Medición de clics: cualquier elemento con data-track="nombre_evento" envía un evento a GA4 -->
+<script>
+document.addEventListener('click', function(e){
+  const el = e.target.closest('[data-track]');
+  if (!el || typeof gtag !== 'function') return;
+  gtag('event', el.dataset.track, {
+    ubicacion: el.dataset.trackLoc || 'sin_definir',
+    texto: (el.textContent || '').trim().slice(0, 60)
+  });
+});
+// Registrar también el envío de los otros dos formularios (contacto/sugerencia ya tienen su propio handler arriba,
+// esto añade el evento GA4 sin tocar su lógica de envío)
+['form-sug'].forEach(function(id){
+  const f = document.getElementById(id);
+  if (f) f.addEventListener('submit', function(){
+    if (typeof gtag === 'function') gtag('event', 'submit_sugerencia', { form_id: id });
+  });
 });
 </script>
 </body>
