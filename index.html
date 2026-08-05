@@ -161,6 +161,7 @@ footer .verde{color:var(--verde-vivo)}
   .muni{transition:none}
   .btn,.s-btn{transition:none}
 }
+form [style*="grid"] > * { min-width: 0; }
 </style>
 </head>
 <body>
@@ -271,9 +272,9 @@ footer .verde{color:var(--verde-vivo)}
     <form id="form-sug" style="margin-top:24px;text-align:left">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <input type="text" id="sg-nombre" placeholder="Tu nombre (opcional)" maxlength="80"
-          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+          style="width:100%;box-sizing:border-box;min-width:0;padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
         <select id="sg-tipo"
-          style="padding:13px 14px;background:#1a2535;border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none">
+          style="width:100%;box-sizing:border-box;min-width:0;padding:13px 14px;background:#1a2535;border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none">
           <option value="Mejora para la app">Mejora para la app</option>
           <option value="Mejora para la web">Mejora para la web</option>
           <option value="He encontrado un fallo">He encontrado un fallo</option>
@@ -298,13 +299,13 @@ footer .verde{color:var(--verde-vivo)}
     <form id="form-patro" style="margin-top:24px;text-align:left">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <input type="text" id="pt-nombre" placeholder="Nombre / empresa *" required maxlength="120"
-          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+          style="width:100%;box-sizing:border-box;min-width:0;padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
         <input type="email" id="pt-email" placeholder="Email de contacto *" required maxlength="120"
-          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+          style="width:100%;box-sizing:border-box;min-width:0;padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
         <select id="pt-tipo"
-          style="padding:13px 14px;background:#1a2535;border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none">
+          style="width:100%;box-sizing:border-box;min-width:0;padding:13px 14px;background:#1a2535;border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none">
           <option value="Restaurante / bar">Restaurante / bar</option>
           <option value="Alojamiento">Alojamiento</option>
           <option value="Ayuntamiento / entidad pública">Ayuntamiento / entidad pública</option>
@@ -313,7 +314,7 @@ footer .verde{color:var(--verde-vivo)}
           <option value="Otro">Otro</option>
         </select>
         <input type="text" id="pt-web" placeholder="Web o Instagram (opcional)" maxlength="150"
-          style="padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
+          style="width:100%;box-sizing:border-box;min-width:0;padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none"/>
       </div>
       <textarea id="pt-msg" placeholder="Cuéntame tu idea de colaboración *" required rows="4" maxlength="1500"
         style="width:100%;margin-top:12px;padding:13px 14px;background:rgba(255,255,255,0.05);border:1px solid var(--borde);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none;resize:vertical;box-sizing:border-box"></textarea>
