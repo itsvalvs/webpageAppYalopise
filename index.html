@@ -389,13 +389,25 @@ munisStory.forEach((m,i) => { if (orden.indexOf(i) < META) m.classList.add('conq
 </script>
 
 <script>
+// Rate limit compartido entre los dos formularios
+const _lastSubmit = { t: 0 };
+const _formLoaded = Date.now();
+
 document.getElementById('form-sug').addEventListener('submit', async function(e){
   e.preventDefault();
   if (document.getElementById('sg-hp').value) return;
   const btn = document.getElementById('sg-btn'), est = document.getElementById('sg-estado');
+  // Anti-bot: envío en menos de 3s tras cargar la página
+  if (Date.now() - _formLoaded < 3000) return;
+  // Rate limit: 30s entre envíos
+  if (Date.now() - _lastSubmit.t < 30000) {
+    est.textContent = '⏳ Espera unos segundos antes de enviar otro mensaje.';
+    est.style.color = '#ffb84d'; est.style.display = 'block';
+    return;
+  }
   btn.disabled = true; btn.textContent = 'Enviando...';
   try {
-    const r = await fetch('https://formsubmit.co/ajax/yalopiseapp@gmail.com', {
+    const r = await fetch('https://formsubmit.co/ajax/el/fisesi', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
@@ -407,6 +419,7 @@ document.getElementById('form-sug').addEventListener('submit', async function(e)
       })
     });
     if (!r.ok) throw new Error();
+    _lastSubmit.t = Date.now();
     est.textContent = '✅ ¡Gracias! Tu sugerencia ha llegado.';
     est.style.color = 'var(--verde-vivo)'; est.style.display = 'block';
     this.reset();
@@ -422,9 +435,17 @@ document.getElementById('form-patro').addEventListener('submit', async function(
   e.preventDefault();
   if (document.getElementById('pt-hp').value) return;
   const btn = document.getElementById('pt-btn'), est = document.getElementById('pt-estado');
+  // Anti-bot: envío en menos de 3s tras cargar la página
+  if (Date.now() - _formLoaded < 3000) return;
+  // Rate limit: 30s entre envíos
+  if (Date.now() - _lastSubmit.t < 30000) {
+    est.textContent = '⏳ Espera unos segundos antes de enviar otro mensaje.';
+    est.style.color = '#ffb84d'; est.style.display = 'block';
+    return;
+  }
   btn.disabled = true; btn.textContent = 'Enviando...';
   try {
-    const r = await fetch('https://formsubmit.co/ajax/yalopiseapp@gmail.com', {
+    const r = await fetch('https://formsubmit.co/ajax/el/fisesi', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
@@ -438,6 +459,7 @@ document.getElementById('form-patro').addEventListener('submit', async function(
       })
     });
     if (!r.ok) throw new Error();
+    _lastSubmit.t = Date.now();
     est.textContent = '✅ ¡Gracias! Te contactaré en cuanto pueda.';
     est.style.color = 'var(--verde-vivo)'; est.style.display = 'block';
     if (typeof gtag === 'function') gtag('event', 'submit_patrocinio', { form_id: 'form-patro' });
